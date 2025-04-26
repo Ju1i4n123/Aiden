@@ -1,0 +1,26 @@
+{
+  "name": "ai-invest-platform",
+  "version": "2.2.1",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start":  "node src/index.js",
+    "migrate": "node migrations.js",
+    "jobs":   "node src/jobs/invest.cjs & node src/jobs/unwind.cjs",
+    "start:all": "concurrently -k \"npm:start\" \"npm:jobs\"",
+    "paper": "cross-env PAPER=true npm run start:all"
+  },
+  "dependencies": {
+    "@alpacahq/alpaca-trade-api": "^3.0.0",
+    "axios": "^1.6.7",
+    "better-sqlite3": "^9.0.0",
+    "cron": "^3.1.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "stripe": "^12.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
